@@ -150,7 +150,10 @@ Another cultural issue was a blame culture between our Apps team and the Operati
 Not all my ideas propagated. Sadly, I was unsuccessful in my attempt to push for SQLite as a datastore. Our “database” for our audit file was the transmission file itself: An xml file with an open file handle that was unparsable for 99.9% of its life cycle. Due to power spikes and a cultural disdain for atomicity we had a lot of “corruption issues” as all the xml tags were left unclosed and the poor performance of .NET on WinCE meant that closing the tags and re-opening the file was far too slow to do on a regular basis. To resolve this problem, I had to reinvent the wheel by writing a rudimentary database using a series of text files to give us atomicity. I also re-wrote the service in a functional manner (purity) to create snapshots of application state before writing, to avoid torn reads of active memory.
 I then wrote a test suite that simulated an audit lifecycle. This test would then kill the process at arbitrary intervals to ensure that it was impossible for the transaction service to spit out an invalid file. These ran daily as part of our continuous integration.
 
-I am quite proud, that the employee whose only job was to manually fix corrupted xml files from the TGX150 series, never had to fix one on the TGX200 series!  
+I am quite proud, that the employee whose only job was to manually fix corrupted xml files from the TGX150 series, never had to fix one on the TGX200 series!
+
+You can see a demo of the device [here](https://www.youtube.com/watch?v=ikVHaCcZ5OQ#t=2m5s).  
+While in retrospect it looks quite basic, embedded development prior to android and the iphone was kinda ghastly. It was a considerable effort to get it this "good" and I had to do quite a few slightly mad things (e.g. writing every winform control by hand and conserving the use of each control handle through re-use). 
 
 #### Diametric Development  
 
